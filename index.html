@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1730" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="description" content="매일 아침 9시, 주요 NBA 소식과 이현중·G리그 뉴스를 한국어로 읽는 개인 뉴스룸." />
+  <title>COURTSIDE — 나만의 NBA 뉴스룸</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#all" aria-label="코트사이드 처음으로"><span class="brand-mark">C<span class="brand-dot">.</span></span><span class="brand-copy">COURTSIDE<small>MY NBA NEWSROOM</small></span></a>
+      <div class="side-label">NEWSROOM</div>
+      <nav class="main-nav" aria-label="주요 메뉴">
+        <button class="nav-item active" data-view="all"><span class="nav-symbol">◫</span> 오늘의 브리핑 <span class="nav-count" id="allCount">—</span></button>
+        <button class="nav-item" data-view="nba"><span class="nav-symbol">◎</span> NBA 전체 뉴스</button>
+        <button class="nav-item" data-view="team"><span class="nav-symbol">▦</span> 팀별 뉴스</button>
+        <button class="nav-item" data-view="lee"><span class="nav-symbol">✦</span> 이현중 · G리그 <span class="nav-pulse"></span></button>
+        <button class="nav-item" data-view="saved"><span class="nav-symbol">♧</span> 저장한 기사 <span class="nav-count" id="savedCount">0</span></button>
+      </nav>
+      <div class="side-label leagues-label">CONFERENCES</div>
+      <div class="conference-title"><span class="conf-dot east"></span> 동부 콘퍼런스</div>
+      <div class="team-shortcuts"><button data-team="BOS">보스턴</button><button data-team="NYK">뉴욕</button><button data-team="PHI">필라델피아</button></div>
+      <div class="conference-title"><span class="conf-dot west"></span> 서부 콘퍼런스</div>
+      <div class="team-shortcuts"><button data-team="LAL">레이커스</button><button data-team="GSW">골든스테이트</button><button data-team="POR">포틀랜드</button></div>
+      <div class="sidebar-bottom"><span class="live-orb"></span><div><strong>매일 오전 9시 기준</strong><small>한국시간 · 자동 뉴스 수집</small></div></div>
+    </aside>
+    <div class="page-area">
+      <header class="topbar">
+        <div class="topbar-left"><button id="menuButton" class="mobile-menu" aria-label="메뉴 열기">☰</button><span class="eyebrow">THE DAILY EDITION</span><span class="top-divider"></span><span id="todayDate">—</span></div>
+        <div class="topbar-right"><span class="status-indicator"><span class="status-dot"></span> KST 09:00 CUT-OFF</span><button class="icon-button" id="helpButton" aria-label="사이트 이용 안내" title="이용 안내">?</button></div>
+      </header>
+      <main class="main-content">
+        <div class="page-heading"><div><div class="label-stripe">YOUR PERSONAL BASKETBALL DESK <span>↗</span></div><h1>농구 소식의 <em>핵심만.</em></h1><p>복잡한 영문 기사 대신, 매일 아침 한글로 읽는 NBA 인사이트.</p></div><div class="edition-seal"><span>DAILY</span><strong>09<span>:</span>00</strong><small>SEOUL TIME</small></div></div>
+        <div class="ticker" aria-label="사이트 안내"><span class="ticker-tag">BREAKING DESK</span><span id="tickerText">검증된 원문을 바탕으로 한국어 요약을 제공합니다.</span><span class="ticker-arrow">↗</span></div>
+        <div class="dashboard-layout">
+          <section class="primary-column">
+            <div class="section-heading"><div><span class="section-kicker" id="sectionKicker">TOP STORIES / 01</span><h2 id="sectionTitle">오늘의 주요 뉴스</h2></div><div class="section-aside" id="sectionSubtitle">최근 브리핑</div></div>
+            <div id="featured" class="feature-host"></div>
+            <div class="section-heading latest-heading"><div><span class="section-kicker">LATEST STORIES</span><h2>뉴스 피드 <span class="feed-count" id="feedCount">0</span></h2></div><button class="sort-button" id="sortButton">최신순 ↓</button></div>
+            <div class="filter-panel">
+              <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="선수, 팀, 기사 검색" aria-label="기사 검색" /></label>
+              <select id="teamFilter" aria-label="팀별 필터"><option value="all">모든 팀</option></select>
+              <select id="dateFilter" aria-label="기사 날짜 필터"><option value="all">모든 날짜</option></select>
+              <select id="categoryFilter" aria-label="기사 종류 필터"><option value="all">모든 주제</option><option value="계약·이적">계약·이적</option><option value="부상">부상</option><option value="경기·기록">경기·기록</option><option value="분석·전망">분석·전망</option><option value="리그 운영">리그 운영</option><option value="기타">기타</option></select>
+            </div>
+            <div id="newsList" class="news-list" aria-live="polite"><div class="loading"><span class="spinner"></span> 뉴스 데이터를 불러오는 중입니다.</div></div>
+          </section>
+          <aside class="right-column">
+            <section class="brief-card"><div class="aside-kicker">MORNING BRIEF <span class="aside-icon">↗</span></div><h3>오늘의 브리핑</h3><div class="brief-date" id="cutoffDate">—</div><div class="brief-stats"><div><strong id="totalNumber">0</strong><small>보관된 기사</small></div><div><strong id="todayNumber">0</strong><small>오늘 새 기사</small></div></div><p id="briefNote">뉴스 수집이 완료되면 이곳에 요약이 표시됩니다.</p><div class="brief-foot"><span class="live-orb"></span><span id="updatedAt">마지막 갱신: 확인 중</span></div></section>
+            <section class="lee-card"><div class="lee-heading"><span class="aside-kicker">PLAYER WATCH / 01</span><span class="korea-chip">KOREA</span></div><div class="lee-monogram">LEE <span>HYUN-JUNG</span></div><h3>이현중 선수<br />특별 추적</h3><p>NBA 계약 · G리그 로스터 · 경기 기록을 중점 확인합니다.</p><div class="lee-status"><span class="lee-indicator"></span><span id="leeStatus">최근 업데이트 확인 중</span></div><button id="leeButton" class="lee-button">관련 뉴스 모두 보기 <span>↗</span></button></section>
+            <section class="sources-card"><div class="aside-kicker">TRUSTED SOURCES</div><h3>확인하는 주요 출처</h3><div class="source-row"><span class="source-icon">N</span><div><strong>NBA 공식 뉴스</strong><small>nba.com</small></div><span>↗</span></div><div class="source-row"><span class="source-icon">E</span><div><strong>ESPN</strong><small>espn.com</small></div><span>↗</span></div><div class="source-row"><span class="source-icon">G</span><div><strong>NBA G리그</strong><small>gleague.nba.com</small></div><span>↗</span></div><p>기사마다 실제 출처 링크와 확인 상태를 표시합니다.</p></section>
+          </aside>
+        </div>
+        <footer class="footer"><span>© 2026 COURTSIDE / PERSONAL EDITION</span><span>원문 저작권은 각 언론사에 있습니다. · 뉴스 요약은 오류가 있을 수 있습니다.</span></footer>
+      </main>
+    </div>
+  </div>
+  <div class="modal-backdrop" id="helpModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><button id="closeHelp" class="modal-close" aria-label="닫기">×</button><span class="section-kicker">HOW IT WORKS</span><h2 id="helpTitle">COURTSIDE 이용 안내</h2><p>매일 오전 9시(한국시간)를 기준으로 지난 24시간의 주요 뉴스와 이현중 선수 관련 소식을 수집합니다. 오른쪽의 날짜는 뉴스 수집 기준일이며 실제 페이지 갱신 시각과 다를 수 있습니다.</p><p>기사 제목과 요약은 제공된 원문 또는 기사 설명을 토대로 자동 작성되며, 정확한 사실관계는 반드시 원문 링크에서 확인해 주세요.</p><p>별표를 누르면 현재 브라우저에 기사 링크를 저장합니다. 저장 목록은 다른 기기와 동기화되지 않습니다.</p><button class="primary-button" id="okayHelp">확인했습니다</button></div></div>
+</body>
+</html>
